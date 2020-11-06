@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "discord.js": "^12.4.1"
+  },
+  "scripts": {
+    "start": "yarn node dist/src/index.js",
+    "build": "tsc",
+    "clean": "rm -rf dist/"
+  }
+}
