@@ -45,16 +45,24 @@ export class Bot extends Client {
     });
 
     this.on("messageReactionAdd", async (r, u) => {
+      console.log(`received - ${r.message.id}`);
       if (r.message.id !== "774782558956945458") return;
 
+      console.log(`progressed`);
       const member = await r.message.guild!.members.fetch(u.id);
+      console.log(u);
+      console.log(member);
       if (r.emoji.name === "1️⃣") {
+        console.log(`one`);
         await member.roles.add("774783479828971520");
       } else if (r.emoji.name === "2️⃣") {
+        console.log(`two`);
         await member.roles.add("774783485722361876");
       } else if (r.emoji.name === "3️⃣") {
+        console.log(`three`);
         await member.roles.add("774783486681808907");
       } else if (r.emoji.name === "💸") {
+        console.log(`four`);
         await member.roles.add("774783487479513088");
       }
       return;
