@@ -44,6 +44,22 @@ export class Bot extends Client {
       await m.roles.add(`753014710084960327`);
     });
 
+    this.on("messageReactionAdd", async (r, u) => {
+      if (r.message.id !== "774782558956945458") return;
+
+      const member = await r.message.guild!.members.fetch(u.id);
+      if (r.emoji.name === "1️⃣") {
+        await member.roles.add("774783479828971520");
+      } else if (r.emoji.name === "2️⃣") {
+        await member.roles.add("774783485722361876");
+      } else if (r.emoji.name === "3️⃣") {
+        await member.roles.add("774783486681808907");
+      } else if (r.emoji.name === "💸") {
+        await member.roles.add("774783487479513088");
+      }
+      return;
+    });
+
     this.login(config.discord.token);
   }
 }
