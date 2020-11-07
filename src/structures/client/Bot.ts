@@ -62,4 +62,8 @@ export class Bot extends Client {
 
     this.login(config.discord.token);
   }
+
+  constructor() {
+    super({ partials: ["REACTION"] });
+  }
 }
