@@ -16,10 +16,11 @@ export class Bot extends Client {
       // Feedback Channel
       if (
         m.channel.id === config.discord.channels.bugreport ||
-        m.channel.id === config.discord.channels.feedback
+        m.channel.id === config.discord.channels.feedback ||
+        m.channel.id === config.discord.channels.emoterequest
       ) {
-        await m.react("✅");
-        await m.react("774062349329498114");
+        await m.react("774409850410500116");
+        await m.react("774410335058001922");
       }
     });
 
