@@ -87,6 +87,6 @@ export class Bot extends Client {
   }
 
   constructor() {
-    super({ partials: ["REACTION"] });
+    super({ partials: ["REACTION", "MESSAGE", "GUILD_MEMBER"] });
   }
 }
