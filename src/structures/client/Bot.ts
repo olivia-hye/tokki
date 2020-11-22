@@ -10,6 +10,20 @@ export class Bot extends Client {
       this.lounge = <TextChannel>(
         await this.channels.fetch(config.discord.channels.lounge)
       );
+
+      const updates = <TextChannel>(
+        await this.channels.fetch("752041568998916186")
+      );
+      const embed = new MessageEmbed()
+        .setAuthor(`Announcement | 20-11-22`)
+        .setDescription(
+          `[ **PROJECT ZEPHYR** ]` +
+            `\n:wind_blowing_face: PRE-REGISTRATION` +
+            `\n:cloud: END: 2020-11-23 @ 6 PM EST` +
+            `\n**REACT :white_sun_cloud: TO ENTER**`
+        )
+        .setColor(`#36393f`);
+      await updates.send("@everyone", embed);
     });
 
     this.on("message", async (m) => {
