@@ -10,21 +10,6 @@ export class Bot extends Client {
       this.lounge = <TextChannel>(
         await this.channels.fetch(config.discord.channels.lounge)
       );
-
-      const updates = <TextChannel>(
-        await this.channels.fetch("752041568998916186")
-      );
-      const message = await updates.messages.fetch(`779964460844449793`);
-      const values = message.reactions.cache.values();
-      for (let v of values) {
-        const users = v.users.cache.values();
-
-        for (let user of users) {
-          const member = updates.guild.member(user);
-          if (!member) return;
-          await member.roles.add("780567298502295602");
-        }
-      }
     });
 
     this.on("message", async (m) => {
@@ -60,7 +45,6 @@ export class Bot extends Client {
     });
 
     this.on("messageReactionAdd", async (r, u) => {
-      console.log(`received - ${r.message.id}`);
       if (r.message.id !== "774782558956945458") return;
 
       const member = await r.message.guild!.members.fetch(u.id);
