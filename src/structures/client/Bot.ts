@@ -14,16 +14,17 @@ export class Bot extends Client {
       const updates = <TextChannel>(
         await this.channels.fetch("752041568998916186")
       );
-      const embed = new MessageEmbed()
-        .setAuthor(`Announcement | 20-11-22`)
-        .setDescription(
-          `[ **PROJECT ZEPHYR** ]` +
-            `\n:wind_blowing_face: PRE-REGISTRATION` +
-            `\n:cloud: END: 2020-11-23 @ 6 PM EST` +
-            `\n**REACT :white_sun_cloud: TO ENTER**`
-        )
-        .setColor(`#36393f`);
-      await updates.send("@everyone", embed);
+      const message = await updates.messages.fetch(`779964460844449793`);
+      const values = message.reactions.cache.values();
+      for (let v of values) {
+        const users = v.users.cache.values();
+
+        for (let user of users) {
+          const member = updates.guild.member(user);
+          if (!member) return;
+          await member.roles.add("780567298502295602");
+        }
+      }
     });
 
     this.on("message", async (m) => {
